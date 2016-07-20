@@ -1,0 +1,29 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '8.0'
+# Uncomment this line if you're using Swift
+# use_frameworks!
+# created by Magic-Unique
+
+inhibit_all_warnings!   # Ignore all warning from framework below
+
+target ‘BaseProject’ do
+#use_frameworks!
+#pod 'ReactiveCocoa', '~> 2.5’
+pod 'MBProgressHUD'     # HUD
+pod 'MJRefresh'         # Pull 2 refresh
+pod 'Masonry'
+
+pod 'AFNetworking'
+pod 'MJExtension'
+pod 'MJPhotoBrowser'
+pod 'SDWebImage'
+
+#pod 'UMengSocial'
+pod 'FMDB'
+#pod 'AMap3DMap' #3D地图SDK
+#pod 'pop'
+
+#pod 'TSAssetsPickerController'
+pod ‘IQKeyboardManager’
+
+end

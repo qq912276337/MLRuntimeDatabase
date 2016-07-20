@@ -1,0 +1,23 @@
+/* 
+  DateDescription.strings
+  Tools
+
+  Created by 吴双 on 15/12/15.
+  Copyright © 2015年 Unique. All rights reserved.
+*/
+
+//NSDateCategory
+"NSDateCategory.text1" = "one minute";
+"NSDateCategory.text2" = "%.f minutes ago";
+"NSDateCategory.text3" = "%.f hours ago";
+"NSDateCategory.text4" = "%.f days ago";
+"NSDateCategory.text5" = "M-d";
+"NSDateCategory.text6" = "%.f years ago";
+"NSDateCategory.text7" = "M-d %@";
+"NSDateCategory.text8" = "M-d HH:mm";
+"NSDateCategory.text9" = "aa hh:mm";
+"NSDateCategory.text10" = "aa hh:mm";
+"NSDateCategory.text11" = "aa hh:mm";
+"NSDateCategory.text12" = "aa hh:mm";
+"NSDateCategory.text13" = "M-d HH:mm";
+"NSDateCategory.text14" = "today %@";
