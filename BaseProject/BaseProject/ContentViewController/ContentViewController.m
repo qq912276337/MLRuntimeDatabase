@@ -38,7 +38,7 @@
         user.stu = stu;
         user.data = [@"12323435" dataUsingEncoding:NSUTF8StringEncoding];
         user.arr = @[tea,tea,tea];
-
+    
     [[MLDatabaseQueue dbQueue] inDatabase:^(FMDatabase *db) {
             [db ml_saveDataWithModel:user primaryKey:@"id" option:^(BOOL save) {
                 
