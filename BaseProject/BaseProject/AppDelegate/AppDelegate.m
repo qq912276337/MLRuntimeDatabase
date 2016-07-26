@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 
 #import "MainViewController.h"
+#import <AlipaySDK/AlipaySDK.h>
+
 @interface AppDelegate ()
 
 @end
