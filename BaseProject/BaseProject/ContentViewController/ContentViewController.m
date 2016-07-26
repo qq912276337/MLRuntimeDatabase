@@ -62,7 +62,7 @@
                 
             }];
             
-            //        /** 删除 */
+            //        /** 删除 */ 
             //        BSUser *user0 = [BSUser new];
             //        user0.id = user.id;
             //        [db ml_deleteDataWithModel:user0 primaryKey:@"id" option:^(BOOL del) {
