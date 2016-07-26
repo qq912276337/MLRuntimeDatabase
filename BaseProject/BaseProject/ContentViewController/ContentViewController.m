@@ -37,14 +37,17 @@
         user.name = [NSString stringWithFormat:@"%@%ld",NSStringFromClass([user class]),i];
         user.stu = stu;
         user.data = [@"12323435" dataUsingEncoding:NSUTF8StringEncoding];
+        MMLog(@"------%@-",user.data);
         user.arr = @[tea,tea,tea];
     
     [[MLDatabaseQueue dbQueue] inDatabase:^(FMDatabase *db) {
             [db ml_saveDataWithModel:user primaryKey:@"id" option:^(BOOL save) {
                 
             }];
-        [db ml_excuteDataWithModel:user primaryKey:@"id" option:^(id output_model) {
-            MMLog(@"-----%@--",output_model);
+        BSUser *user0 = [BSUser new];
+        user0.id = user.id;
+        [db ml_excuteDataWithModel:user0 primaryKey:@"id" option:^(BSUser *output_model) {
+            MMLog(@"-----%@--",output_model.data);
         }];
     }];
     
