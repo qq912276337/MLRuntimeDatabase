@@ -22,6 +22,7 @@ typedef void(^AllModelsOption)(NSMutableArray *models);
 //- (void)ml_insertDataWithModel:(id )model option:(InsertOption )option;
 //- (void)ml_updateDataWithModel:(id) model optiin:(UpdateOption )option;
 
+
 - (void )ml_saveDataWithModel:(id )model primaryKey:(NSString *)primaryKey option:(SaveOption )option;
 - (void)ml_deleteDataWithModel:(id )model primaryKey:(NSString *)primaryKey option:(DeleteOption )option;
 /** 查询某个模型数据 */
