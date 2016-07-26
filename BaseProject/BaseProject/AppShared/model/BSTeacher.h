@@ -11,4 +11,5 @@
 @interface BSTeacher : NSObject
 @property(nonatomic,assign)NSInteger id;
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *depart;
 @end
