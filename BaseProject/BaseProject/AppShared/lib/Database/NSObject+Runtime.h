@@ -25,7 +25,7 @@ typedef enum{
     RuntimeObjectIvarTypeArray = 65,
     /** 流：data */
     RuntimeObjectIvarTypeData = 66,
-    /** 其他 */
+    /** 其他(在数据库中使用long进行取值) */
     RuntimeObjectIvarTypeOther = -1
 }RuntimeObjectIvarType;
 

@@ -9,8 +9,28 @@
 #import "FMDatabase+MLDatabase.h"
 
 @implementation FMDatabase (CLDatabase)
+
+
+#pragma mark -- 无PrimaryKey
+- (void )ml_saveDataWithModel:(id )model  option:(SaveOption )option{
+    [self ml_saveDataWithModel:model primaryKey:MLDB_PrimaryKey option:option];
+}
+
+- (void)ml_deleteDataWithModel:(id )model  option:(DeleteOption )option{
+    [self ml_deleteDataWithModel:model primaryKey:MLDB_PrimaryKey option:option];
+}
+
+- (id )ml_excuteDataWithModel:(id )model  option:(ExcuteOption )option{
+    return [self ml_excuteDataWithModel:model primaryKey:MLDB_PrimaryKey option:option];
+}
+
+- (void)ml_excuteDatasWithModel:(id )model  option:(AllModelsOption )option{
+    [self ml_excuteDatasWithModel:model primaryKey:MLDB_PrimaryKey option:option];
+}
+
+#pragma mark -- 有PrimaryKey
 - (void)ml_exsitInDatabaseForModel:(id )model primaryKey:(NSString *)primaryKey option:(ExistExcuteOption )option{
-    if (!primaryKey) primaryKey = @"id";
+    if (!primaryKey) primaryKey = MLDB_PrimaryKey;
     FMResultSet *set = [self executeQuery:[NSString stringWithFormat:@"select * from %@ where %@ = %@ ;",NSStringFromClass([model class]),primaryKey,[model valueForKey:primaryKey]]];
     if (option) {
         if ([set next]) {
@@ -38,7 +58,7 @@
                 if ([dict objectForKey:ivar_name]) {
                     // 递归调用
                     if (value) {
-                        [self ml_insertDataWithModel:value primaryKey:@"id" option:nil];
+                        [self ml_insertDataWithModel:value primaryKey:MLDB_PrimaryKey option:nil];
                     }
                     //拼接外键
                     id subValue = [value valueForKey:primaryKey];
@@ -149,11 +169,9 @@
                     initSql = [initSql stringByAppendingString:@"',"];
                     value = nil;
                 }
-                
             }else if (ivar_type == RuntimeObjectIvarTypeData){
                 NSData *data = [model valueForKey:ivar_name];
                 value = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-                
             }else{
                 //判断字符串以---MLDB_AppendingIDForModelProperty---结尾
                 if ([ivar_name hasSuffix:MLDB_AppendingIDForModelProperty]) {
