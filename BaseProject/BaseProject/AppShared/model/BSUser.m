@@ -22,8 +22,6 @@
 }
 
 
-
-
 + (NSDictionary *)ml_propertyIsInstanceOfArray{
     return @{@"arr":[BSTeacher class]};
 }

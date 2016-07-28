@@ -10,7 +10,7 @@
 
 #import "MainViewController.h"
 #import <AlipaySDK/AlipaySDK.h>
-
+#import <MJRefresh.h>
 @interface AppDelegate ()
 
 @end
@@ -30,6 +30,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window.rootViewController = [MainViewController shareMainViewController];
+    
+//    UIScrollView *scro = [UIScrollView new];
+//    scro.header  
     return YES;
 }
 

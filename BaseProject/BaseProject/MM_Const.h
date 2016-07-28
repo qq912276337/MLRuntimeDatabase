@@ -22,6 +22,7 @@
 #endif
 
 #import "NSObject+Runtime.h"
+#define MLDeprecated(instead) NS_DEPRECATED(2_0, 2_0, 2_0, 2_0, instead)
 
 #define MMNotiFication [NSNotificationCenter defaultCenter]
 #define MMApplication [UIApplication sharedApplication]

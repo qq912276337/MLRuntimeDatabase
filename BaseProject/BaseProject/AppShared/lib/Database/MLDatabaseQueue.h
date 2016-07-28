@@ -14,7 +14,9 @@
 @interface MLDatabaseQueue : NSObject
 
 
-+ (FMDatabaseQueue *)dbQueue;
++ (FMDatabaseQueue *)dbQueue MLDeprecated("ml_databaseQueue");
+
++ (FMDatabaseQueue *)ml_databaseQueue;
 
 //+ (void)db:(FMDatabase *)db saveDataWithModel:(id )model primaryKey:(NSString *)primaryKey option:(SaveOption )option;
 //
