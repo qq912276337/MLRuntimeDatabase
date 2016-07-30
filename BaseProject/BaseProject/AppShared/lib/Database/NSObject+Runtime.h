@@ -25,6 +25,8 @@ typedef enum{
     RuntimeObjectIvarTypeArray = 65,
     /** 流：data */
     RuntimeObjectIvarTypeData = 66,
+    /** 图片：image */
+    RuntimeObjectIvarTypeImage = 67,
     /** 其他(在数据库中使用long进行取值) */
     RuntimeObjectIvarTypeOther = -1
 }RuntimeObjectIvarType;
@@ -37,16 +39,22 @@ typedef void(^RuntimeObjectIvarsOption)(MLDatabaseRuntimeIvar *ivar);
 + (NSDictionary *)ml_primaryKey;
 
 /**
- *  将属性名为数组
+ *  将属性为数组
  *
  */
 + (NSDictionary *)ml_propertyIsInstanceOfArray;
 
 /**
- *  将属性名为NSDATA
+ *  将属性为NSDATA
  *
  */
 + (NSDictionary *)ml_propertyIsInstanceOfData;
+
+/**
+ *  将属性为UIImage
+ *
+ */
++ (NSDictionary *)ml_propertyIsInstanceOfImage;
 
 /**
  *  只有这个数组中的属性名才允许

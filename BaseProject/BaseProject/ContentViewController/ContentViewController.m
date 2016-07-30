@@ -43,7 +43,7 @@
         user.data = [@"12323435" dataUsingEncoding:NSUTF8StringEncoding];
         user.arr = @[tea,tea,tea];
         
-        [[MLDatabaseQueue dbQueue] inDatabase:^(FMDatabase *db) {
+        [[MLDatabaseQueue ml_databaseQueue] inDatabase:^(FMDatabase *db) {
             /** 存储:会自动调用insert或者update，不需要担心重复插入数据 */
             [db ml_saveDataWithModel:user primaryKey:@"id" option:^(BOOL save) {
             }];
