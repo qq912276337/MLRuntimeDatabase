@@ -39,10 +39,6 @@
 		BF80C29D1D2B454B0068260F /* UIButton+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = BF80C2531D2B454B0068260F /* UIButton+Extension.m */; };
 		BF80C29E1D2B454B0068260F /* UIColor+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = BF80C2561D2B454B0068260F /* UIColor+Extension.m */; };
 		BF80C29F1D2B454B0068260F /* UIColor+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = BF80C2581D2B454B0068260F /* UIColor+Extensions.m */; };
-		BF80C2A01D2B454B0068260F /* MUCircleImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BF80C25B1D2B454B0068260F /* MUCircleImageManager.m */; };
-		BF80C2A11D2B454B0068260F /* UIImage+Circle.m in Sources */ = {isa = PBXBuildFile; fileRef = BF80C25D1D2B454B0068260F /* UIImage+Circle.m */; };
-		BF80C2A21D2B454B0068260F /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = BF80C25F1D2B454B0068260F /* UIImage+Extension.m */; };
-		BF80C2A31D2B454B0068260F /* UIImage+MMImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BF80C2611D2B454B0068260F /* UIImage+MMImage.m */; };
 		BF80C2A41D2B454B0068260F /* UIImageView+KBDeleteImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF80C2641D2B454B0068260F /* UIImageView+KBDeleteImageView.m */; };
 		BF80C2A51D2B454B0068260F /* UIImageView+SCImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF80C2661D2B454B0068260F /* UIImageView+SCImageView.m */; };
 		BF80C2A61D2B454B0068260F /* UILabel+Factory.m in Sources */ = {isa = PBXBuildFile; fileRef = BF80C26A1D2B454B0068260F /* UILabel+Factory.m */; };
@@ -64,6 +60,8 @@
 		BF80C2B61D2B454B0068260F /* bsfile in Resources */ = {isa = PBXBuildFile; fileRef = BF80C28D1D2B454B0068260F /* bsfile */; };
 		BF80C2B91D2B46940068260F /* MMBlurEffectView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF80C2B81D2B46940068260F /* MMBlurEffectView.m */; };
 		BF88EAB01D4C5FFE0098440A /* MLSystemInterfaceTool.m in Sources */ = {isa = PBXBuildFile; fileRef = BF88EAAF1D4C5FFE0098440A /* MLSystemInterfaceTool.m */; };
+		BF88EAB91D4CA8200098440A /* TestDatabaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF88EAB71D4CA8200098440A /* TestDatabaseViewController.m */; };
+		BF88EABA1D4CA8200098440A /* TestDatabaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF88EAB81D4CA8200098440A /* TestDatabaseViewController.xib */; };
 		BF9622651D4728D300362A87 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BF9622021D4728D300362A87 /* AlipaySDK.bundle */; };
 		BF9622661D4728D300362A87 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9622031D4728D300362A87 /* libcrypto.a */; };
 		BF9622671D4728D300362A87 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9622041D4728D300362A87 /* libssl.a */; };
@@ -180,14 +178,6 @@
 		BF80C2561D2B454B0068260F /* UIColor+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extension.m"; sourceTree = "<group>"; };
 		BF80C2571D2B454B0068260F /* UIColor+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extensions.h"; sourceTree = "<group>"; };
 		BF80C2581D2B454B0068260F /* UIColor+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extensions.m"; sourceTree = "<group>"; };
-		BF80C25A1D2B454B0068260F /* MUCircleImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUCircleImageManager.h; sourceTree = "<group>"; };
-		BF80C25B1D2B454B0068260F /* MUCircleImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUCircleImageManager.m; sourceTree = "<group>"; };
-		BF80C25C1D2B454B0068260F /* UIImage+Circle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Circle.h"; sourceTree = "<group>"; };
-		BF80C25D1D2B454B0068260F /* UIImage+Circle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Circle.m"; sourceTree = "<group>"; };
-		BF80C25E1D2B454B0068260F /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
-		BF80C25F1D2B454B0068260F /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
-		BF80C2601D2B454B0068260F /* UIImage+MMImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MMImage.h"; sourceTree = "<group>"; };
-		BF80C2611D2B454B0068260F /* UIImage+MMImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MMImage.m"; sourceTree = "<group>"; };
 		BF80C2631D2B454B0068260F /* UIImageView+KBDeleteImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+KBDeleteImageView.h"; sourceTree = "<group>"; };
 		BF80C2641D2B454B0068260F /* UIImageView+KBDeleteImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+KBDeleteImageView.m"; sourceTree = "<group>"; };
 		BF80C2651D2B454B0068260F /* UIImageView+SCImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+SCImageView.h"; sourceTree = "<group>"; };
@@ -226,6 +216,9 @@
 		BF80C2B81D2B46940068260F /* MMBlurEffectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMBlurEffectView.m; path = ../AppShared/view/MMBlurEffectView.m; sourceTree = "<group>"; };
 		BF88EAAE1D4C5FFE0098440A /* MLSystemInterfaceTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLSystemInterfaceTool.h; sourceTree = "<group>"; };
 		BF88EAAF1D4C5FFE0098440A /* MLSystemInterfaceTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLSystemInterfaceTool.m; sourceTree = "<group>"; };
+		BF88EAB61D4CA8200098440A /* TestDatabaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDatabaseViewController.h; sourceTree = "<group>"; };
+		BF88EAB71D4CA8200098440A /* TestDatabaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDatabaseViewController.m; sourceTree = "<group>"; };
+		BF88EAB81D4CA8200098440A /* TestDatabaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestDatabaseViewController.xib; sourceTree = "<group>"; };
 		BF9622021D4728D300362A87 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		BF9622031D4728D300362A87 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
 		BF9622041D4728D300362A87 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
@@ -597,7 +590,6 @@
 				BF80C24E1D2B454B0068260F /* UIBarButtonItem */,
 				BF80C2511D2B454B0068260F /* UIButton */,
 				BF80C2541D2B454B0068260F /* UIColor */,
-				BF80C2591D2B454B0068260F /* UIImage */,
 				BF80C2621D2B454B0068260F /* UIImageView */,
 				BF80C2671D2B454B0068260F /* UIKit+Extension.h */,
 				BF80C2681D2B454B0068260F /* UILabel */,
@@ -636,21 +628,6 @@
 				BF80C2581D2B454B0068260F /* UIColor+Extensions.m */,
 			);
 			path = UIColor;
-			sourceTree = "<group>";
-		};
-		BF80C2591D2B454B0068260F /* UIImage */ = {
-			isa = PBXGroup;
-			children = (
-				BF80C25A1D2B454B0068260F /* MUCircleImageManager.h */,
-				BF80C25B1D2B454B0068260F /* MUCircleImageManager.m */,
-				BF80C25C1D2B454B0068260F /* UIImage+Circle.h */,
-				BF80C25D1D2B454B0068260F /* UIImage+Circle.m */,
-				BF80C25E1D2B454B0068260F /* UIImage+Extension.h */,
-				BF80C25F1D2B454B0068260F /* UIImage+Extension.m */,
-				BF80C2601D2B454B0068260F /* UIImage+MMImage.h */,
-				BF80C2611D2B454B0068260F /* UIImage+MMImage.m */,
-			);
-			path = UIImage;
 			sourceTree = "<group>";
 		};
 		BF80C2621D2B454B0068260F /* UIImageView */ = {
@@ -900,6 +877,9 @@
 			children = (
 				BFB36A9C1D2A420000040BD2 /* AppDelegate.h */,
 				BFB36A9D1D2A420000040BD2 /* AppDelegate.m */,
+				BF88EAB61D4CA8200098440A /* TestDatabaseViewController.h */,
+				BF88EAB71D4CA8200098440A /* TestDatabaseViewController.m */,
+				BF88EAB81D4CA8200098440A /* TestDatabaseViewController.xib */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -1072,6 +1052,7 @@
 				BF80C2B51D2B454B0068260F /* bsfile in Resources */,
 				BF9622651D4728D300362A87 /* AlipaySDK.bundle in Resources */,
 				BF80C2A91D2B454B0068260F /* UINavigationBar.bundle in Resources */,
+				BF88EABA1D4CA8200098440A /* TestDatabaseViewController.xib in Resources */,
 				BFB36AA41D2A420000040BD2 /* bsfile in Resources */,
 				BF80C2911D2B454B0068260F /* DateDescription.strings in Resources */,
 				BF80C2B61D2B454B0068260F /* bsfile in Resources */,
@@ -1169,7 +1150,6 @@
 				BF80C2A61D2B454B0068260F /* UILabel+Factory.m in Sources */,
 				BF80C2AC1D2B454B0068260F /* UIView+Extension.m in Sources */,
 				BF3327151D372D8600CA5719 /* NSObject+Runtime.m in Sources */,
-				BF80C2A11D2B454B0068260F /* UIImage+Circle.m in Sources */,
 				BFB36AB31D2A43C700040BD2 /* BaseNavigationController.m in Sources */,
 				BF33271B1D372E7700CA5719 /* BSStudent.m in Sources */,
 				BF80C29B1D2B454B0068260F /* UIBarButtonItem+CLExtension.m in Sources */,
@@ -1180,9 +1160,9 @@
 				BF80C2B91D2B46940068260F /* MMBlurEffectView.m in Sources */,
 				BF80C2B01D2B454B0068260F /* UIView+View.m in Sources */,
 				BFB36AA71D2A425500040BD2 /* MainViewController.m in Sources */,
-				BF80C2A01D2B454B0068260F /* MUCircleImageManager.m in Sources */,
 				BF3327131D372D8600CA5719 /* MLDatabaseQueue.m in Sources */,
 				BF96226E1D4728D300362A87 /* openssl_wrapper.m in Sources */,
+				BF88EAB91D4CA8200098440A /* TestDatabaseViewController.m in Sources */,
 				BF80C2AF1D2B454B0068260F /* UIView+Snapshot.m in Sources */,
 				BF80C2981D2B454B0068260F /* NSString+MMFileSize.m in Sources */,
 				BF80C2921D2B454B0068260F /* NSDate+Extension.m in Sources */,
@@ -1195,11 +1175,9 @@
 				BF80C29F1D2B454B0068260F /* UIColor+Extensions.m in Sources */,
 				BF80C2B11D2B454B0068260F /* UIViewController+Additem.m in Sources */,
 				BF80C29E1D2B454B0068260F /* UIColor+Extension.m in Sources */,
-				BF80C2A31D2B454B0068260F /* UIImage+MMImage.m in Sources */,
 				BF80C2971D2B454B0068260F /* NSString+Extension.m in Sources */,
 				BF80C29D1D2B454B0068260F /* UIButton+Extension.m in Sources */,
 				BF96226C1D4728D300362A87 /* MD5DataSigner.m in Sources */,
-				BF80C2A21D2B454B0068260F /* UIImage+Extension.m in Sources */,
 				BF80C28E1D2B454B0068260F /* NSArray+Extension.m in Sources */,
 				BF9622701D4728D300362A87 /* RSADataVerifier.m in Sources */,
 				BF80C2901D2B454B0068260F /* NSData+Unique.m in Sources */,

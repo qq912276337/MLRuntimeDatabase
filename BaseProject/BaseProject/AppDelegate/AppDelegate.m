@@ -11,6 +11,7 @@
 #import "MainViewController.h"
 #import <AlipaySDK/AlipaySDK.h>
 #import <MJRefresh.h>
+#import "TestDatabaseViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -29,10 +30,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    self.window.rootViewController = [MainViewController shareMainViewController];
+//    self.window.rootViewController = [MainViewController shareMainViewController];
+    self.window.rootViewController = [TestDatabaseViewController new];
     
-//    UIScrollView *scro = [UIScrollView new];
-//    scro.header  
+
     return YES;
 }
 

@@ -49,7 +49,6 @@
     [[model class] ml_objectIvar_nameAndIvar_typeWithOption:^(MLDatabaseRuntimeIvar *ivar) {
         NSString *ivar_name = ivar.name;
         NSInteger ivar_type = ivar.type;
-        MMLog(@"----%@--%ld---",ivar_name,ivar_type);
         if (ivar_type == RuntimeObjectIvarTypeObject) {
             //先取值出来
             id value = [model valueForKey:ivar_name];
@@ -298,6 +297,6 @@
 #pragma mark -- PrivateMethod
 /** 根据文件名获取文件全路径 */
 - (NSString *)fullPathWithFileName:(NSString *)fileName{
-    return [MMAppHomePath_DocumentDirectory stringByAppendingPathComponent:fileName];
+    return [MMAppHomePath_DocumentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"MLDatabase%@",fileName]];
 }
 @end
