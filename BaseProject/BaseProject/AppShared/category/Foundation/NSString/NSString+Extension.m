@@ -175,7 +175,33 @@
     return size;
 }
 
-
+-(NSString *)stringFromfileSize:(unsigned long long)fileSize
+{
+    NSInteger KB = 1024;
+    NSInteger MB = KB*KB;
+    NSInteger GB = MB*KB;
+    
+    if (fileSize < 10)
+    {
+        return @"0 B";
+        
+    }else if (fileSize < KB)
+    {
+        return @"< 1 KB";
+        
+    }else if (fileSize < MB)
+    {
+        return [NSString stringWithFormat:@"%.1f KB",((CGFloat)fileSize)/KB];
+        
+    }else if (fileSize < GB)
+    {
+        return [NSString stringWithFormat:@"%.1f MB",((CGFloat)fileSize)/MB];
+        
+    }else
+    {
+        return [NSString stringWithFormat:@"%.1f GB",((CGFloat)fileSize)/GB];
+    }
+}
 
 
 @end
