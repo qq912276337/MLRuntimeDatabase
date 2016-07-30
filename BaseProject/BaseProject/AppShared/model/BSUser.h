@@ -16,5 +16,5 @@
 @property(nonatomic,strong)NSData*data;
 @property(nonatomic,strong)BSStudent*stu;
 @property (nonatomic, copy) NSString *name;
-
+@property(nonatomic,strong)UIImage*image;
 @end

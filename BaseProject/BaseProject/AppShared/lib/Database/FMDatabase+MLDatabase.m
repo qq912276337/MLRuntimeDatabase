@@ -68,7 +68,6 @@
                     sql2 = [sql2 stringByAppendingString:[NSString stringWithFormat:@"%ld,",[value longValue]]];
                 }
             }
-            
             if ([[model class] ml_propertyIsInstanceOfArray] && [[[model class] ml_propertyIsInstanceOfArray] objectForKey:ivar_name]) {
                 NSArray *arr = value;
                 NSMutableArray *arrm = [NSMutableArray arrayWithCapacity:arr.count];
@@ -92,8 +91,8 @@
                 sql2 = [sql2 stringByAppendingString:[NSString stringWithFormat:@"%@",value]];
                 sql2 = [sql2 stringByAppendingString:@"',"];
             }
-        }else if (ivar_type == RuntimeObjectIvarTypeDoubleAndFloat){
-            
+        }
+        else if (ivar_type == RuntimeObjectIvarTypeDoubleAndFloat){
             NSNumber *doubleNumber = [model valueForKey:ivar_name];
             sql2 = [sql2 stringByAppendingString:[NSString stringWithFormat:@"%@,",doubleNumber]];
         }else if (ivar_type == RuntimeObjectIvarTypeArray){

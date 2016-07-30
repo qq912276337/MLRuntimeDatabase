@@ -21,6 +21,9 @@
     return @{MLDB_PrimaryKey:@"uid"};
 }
 
++ (NSDictionary *)ml_propertyIsInstanceOfImage{
+    return @{@"image":[UIImage class]};
+}
 
 + (NSDictionary *)ml_propertyIsInstanceOfArray{
     return @{@"arr":[BSTeacher class]};

@@ -21,7 +21,7 @@ NSString *const MLDB_PrimaryKey = @"id";
 }
 
 /**
- *  属性名为数组
+ *  属性为数组
  *
  */
 
@@ -30,12 +30,21 @@ NSString *const MLDB_PrimaryKey = @"id";
 }
 
 /**
- *  属性名为NSDATA
+ *  属性为NSDATA
  *
  */
 + (NSDictionary *)ml_propertyIsInstanceOfData{
     return nil;
 }
+
+/**
+ *  将属性为UIImage
+ *
+ */
++ (NSDictionary *)ml_propertyIsInstanceOfImage{
+    return nil;
+}
+
 /**
  *  只有这个数组中的属性名才允许
  */
@@ -127,6 +136,8 @@ NSString *const MLDB_PrimaryKey = @"id";
             initSql = [initSql stringByAppendingString:[NSString stringWithFormat:@"%@ text DEFAULT NULL,",ivar_name]];
         }else if (ivar_type == RuntimeObjectIvarTypeData){
             initSql = [initSql stringByAppendingString:[NSString stringWithFormat:@"%@ text DEFAULT NULL,",ivar_name]];
+        }else if (ivar_type == RuntimeObjectIvarTypeImage){
+            initSql = [initSql stringByAppendingString:[NSString stringWithFormat:@"%@ text DEFAULT NULL,",ivar_name]];
         }else{
             /** id */
             if ([ivar_name isEqualToString:primaryKey] ) {
@@ -160,6 +171,12 @@ NSString *const MLDB_PrimaryKey = @"id";
     if ([self ml_propertyIsInstanceOfArray]) {
         if ([[self ml_propertyIsInstanceOfArray] objectForKey:ivar_name]) {
             ivar_type = RuntimeObjectIvarTypeArray;
+        }
+    }
+    
+    if ([self ml_propertyIsInstanceOfImage]) {
+        if ([[self ml_propertyIsInstanceOfImage] objectForKey:ivar_name]) {
+            ivar_type = RuntimeObjectIvarTypeImage;
         }
     }
     
