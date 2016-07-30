@@ -21,6 +21,7 @@
 #define MMLog(...)
 #endif
 
+#import "NSString+Extension.h"
 #import "NSObject+Runtime.h"
 #define MLDeprecated(instead) NS_DEPRECATED(2_0, 2_0, 2_0, 2_0, instead)
 

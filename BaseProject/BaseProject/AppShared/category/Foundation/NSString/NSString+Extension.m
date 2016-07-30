@@ -47,7 +47,7 @@
 + (NSString *)stringForTimeSince1970{
     NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
     NSTimeInterval a=[dat timeIntervalSince1970];
-    NSString *timeString = [NSString stringWithFormat:@"%f", a];//转为字符型
+    NSString *timeString = [NSString stringWithFormat:@"%.5f", a];//转为字符型
     return timeString;
 }
 

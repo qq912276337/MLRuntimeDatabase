@@ -41,4 +41,8 @@ typedef void(^AllModelsOption)(NSMutableArray *models);
 - (id )ml_excuteDataWithModel:(id )model primaryKey:(NSString *)primaryKey option:(ExcuteOption )option;
 /** 查询某种所有的模型数据 */
 - (void)ml_excuteDatasWithModel:(id )model primaryKey:(NSString *)primaryKey option:(AllModelsOption )option;
+
+#pragma mark -- Method
+/** 根据文件名获取文件全路径 */
+- (NSString *)fullPathWithFileName:(NSString *)fileName;
 @end

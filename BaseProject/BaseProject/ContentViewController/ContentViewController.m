@@ -40,6 +40,7 @@
         user.id = i;
         user.name = [NSString stringWithFormat:@"%@%ld",NSStringFromClass([user class]),i];
         user.stu = stu;
+        user.image = [UIImage imageNamed:@"sml.jpg"];
         user.data = [@"12323435" dataUsingEncoding:NSUTF8StringEncoding];
         user.arr = @[tea,tea,tea];
         

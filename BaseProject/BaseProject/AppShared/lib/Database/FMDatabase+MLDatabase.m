@@ -49,6 +49,7 @@
     [[model class] ml_objectIvar_nameAndIvar_typeWithOption:^(MLDatabaseRuntimeIvar *ivar) {
         NSString *ivar_name = ivar.name;
         NSInteger ivar_type = ivar.type;
+        MMLog(@"----%@--%ld---",ivar_name,ivar_type);
         if (ivar_type == RuntimeObjectIvarTypeObject) {
             //先取值出来
             id value = [model valueForKey:ivar_name];
@@ -78,14 +79,18 @@
                 sql2 = [sql2 stringByAppendingString:@"'"];
                 sql2 = [sql2 stringByAppendingString:[NSString stringWithFormat:@"%@",arrm.mj_JSONString]];
                 sql2 = [sql2 stringByAppendingString:@"',"];
-            }
-            
-            if ([[model class] ml_propertyIsInstanceOfData] && [[[model class] ml_propertyIsInstanceOfData] objectForKey:ivar_name]) {
+            }else if ([[model class] ml_propertyIsInstanceOfData] && [[[model class] ml_propertyIsInstanceOfData] objectForKey:ivar_name]) {
                 NSData *data = value;
                 ivar_type = RuntimeObjectIvarTypeData;
                 sql2 = [sql2 stringByAppendingString:[NSString stringWithFormat:@"%@,",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]]];
+            }else if ([[model class] ml_propertyIsInstanceOfImage] && [[[model class] ml_propertyIsInstanceOfImage] objectForKey:ivar_name]){
+                ivar_type = RuntimeObjectIvarTypeImage;
+                NSString *timeSince1970 = [NSString stringForTimeSince1970];
+                UIImage *image = [model valueForKey:ivar_name];
+                [UIImagePNGRepresentation(image) writeToFile:[self fullPathWithFileName:timeSince1970] atomically:YES];
+                //这里只需要存储时间戳的字符串，取值时需要拼接
+                sql2 = [sql2 stringByAppendingString:[NSString stringWithFormat:@"%@,",timeSince1970]];
             }
-            
             if (ivar_type == RuntimeObjectIvarTypeObject) {
                 sql2 = [sql2 stringByAppendingString:@"'"];
                 sql2 = [sql2 stringByAppendingString:[NSString stringWithFormat:@"%@",value]];
@@ -171,6 +176,11 @@
             }else if (ivar_type == RuntimeObjectIvarTypeData){
                 NSData *data = [model valueForKey:ivar_name];
                 value = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+            }else if (ivar_type == RuntimeObjectIvarTypeImage){
+                UIImage *image = [model valueForKey:ivar_name];
+                NSString *timeSince1970 = [NSString stringForTimeSince1970];
+                [UIImagePNGRepresentation(image) writeToFile:[self fullPathWithFileName:timeSince1970] atomically:YES];
+                value = timeSince1970;
             }else{
                 //判断字符串以---MLDB_AppendingIDForModelProperty---结尾
                 if ([ivar_name hasSuffix:MLDB_AppendingIDForModelProperty]) {
@@ -238,6 +248,10 @@
                 }else if(ivar.type == RuntimeObjectIvarTypeData){
                     NSString *dataStr = [set stringForColumn:ivar.name];
                     [model setValue:[dataStr dataUsingEncoding:NSUTF8StringEncoding] forKey:ivar.name];
+                }else if(ivar.type == RuntimeObjectIvarTypeImage){
+                    NSString *imageName = [set stringForColumn:ivar.name];
+                    UIImage *image = [UIImage imageWithContentsOfFile:[self fullPathWithFileName:imageName]];
+                    [model setValue:image forKey:ivar.name];
                 }else if (ivar.type == RuntimeObjectIvarTypeDoubleAndFloat){
                     [model setValue:@([set doubleForColumn:ivar.name]) forKey:ivar.name];
                 }else if (ivar.type == RuntimeObjectIvarTypeObject){
@@ -279,5 +293,11 @@
     }
     if (option) option(arr);
     
+}
+
+#pragma mark -- PrivateMethod
+/** 根据文件名获取文件全路径 */
+- (NSString *)fullPathWithFileName:(NSString *)fileName{
+    return [MMAppHomePath_DocumentDirectory stringByAppendingPathComponent:fileName];
 }
 @end
