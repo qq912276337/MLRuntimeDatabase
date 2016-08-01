@@ -453,11 +453,6 @@
 			isa = PBXGroup;
 			children = (
 				BFB36A9B1D2A420000040BD2 /* AppDelegate */,
-				BFB36AA81D2A42CB00040BD2 /* LeftMenu */,
-				BFB36AB01D2A43AC00040BD2 /* NavigationController */,
-				BFB36A9E1D2A420000040BD2 /* AppShared */,
-				BFB36AAC1D2A436C00040BD2 /* ContentViewController */,
-				BFB36AA01D2A420000040BD2 /* MainViewController */,
 				BF76BE881D2257BD0034DD3C /* Supporting Files */,
 			);
 			path = BaseProject;
@@ -472,6 +467,7 @@
 				BF76BEBB1D22581D0034DD3C /* MM_Const.h */,
 				BF76BEBC1D2258310034DD3C /* PrefixHeader.pch */,
 				BF76BE891D2257BD0034DD3C /* main.m */,
+				BFE5C52B1D4ED6720031D78A /* Others */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -894,7 +890,8 @@
 				BF80C28C1D2B454B0068260F /* view */,
 				BFB36A9F1D2A420000040BD2 /* bsfile */,
 			);
-			path = AppShared;
+			name = AppShared;
+			path = ../AppShared;
 			sourceTree = "<group>";
 		};
 		BFB36AA01D2A420000040BD2 /* MainViewController */ = {
@@ -904,7 +901,8 @@
 				BFB36AA51D2A425500040BD2 /* MainViewController.h */,
 				BFB36AA61D2A425500040BD2 /* MainViewController.m */,
 			);
-			path = MainViewController;
+			name = MainViewController;
+			path = ../MainViewController;
 			sourceTree = "<group>";
 		};
 		BFB36AA81D2A42CB00040BD2 /* LeftMenu */ = {
@@ -916,7 +914,8 @@
 				BFB36AAA1D2A42DC00040BD2 /* LeftMenuView.m */,
 				BF80C2261D2B44450068260F /* sml.jpg */,
 			);
-			path = LeftMenu;
+			name = LeftMenu;
+			path = ../LeftMenu;
 			sourceTree = "<group>";
 		};
 		BFB36AAC1D2A436C00040BD2 /* ContentViewController */ = {
@@ -925,7 +924,8 @@
 				BFB36AAD1D2A437C00040BD2 /* ContentViewController.h */,
 				BFB36AAE1D2A437C00040BD2 /* ContentViewController.m */,
 			);
-			path = ContentViewController;
+			name = ContentViewController;
+			path = ../ContentViewController;
 			sourceTree = "<group>";
 		};
 		BFB36AB01D2A43AC00040BD2 /* NavigationController */ = {
@@ -934,7 +934,21 @@
 				BFB36AB11D2A43C700040BD2 /* BaseNavigationController.h */,
 				BFB36AB21D2A43C700040BD2 /* BaseNavigationController.m */,
 			);
-			path = NavigationController;
+			name = NavigationController;
+			path = ../NavigationController;
+			sourceTree = "<group>";
+		};
+		BFE5C52B1D4ED6720031D78A /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				BFB36AA81D2A42CB00040BD2 /* LeftMenu */,
+				BFB36AB01D2A43AC00040BD2 /* NavigationController */,
+				BFB36A9E1D2A420000040BD2 /* AppShared */,
+				BFB36AAC1D2A436C00040BD2 /* ContentViewController */,
+				BFB36AA01D2A420000040BD2 /* MainViewController */,
+			);
+			name = Others;
+			path = AppDelegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
