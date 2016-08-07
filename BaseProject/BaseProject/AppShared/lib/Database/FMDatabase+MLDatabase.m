@@ -142,7 +142,6 @@
     NSString *sql2 = [NSString stringWithFormat:@" where %@ = %@ ;",primaryKey,[model valueForKey:primaryKey]];
     [[model class] ml_objectIvar_nameAndIvar_typeWithOption:^(MLDatabaseRuntimeIvar *ivar) {
         [[model class] ml_replaceKeyWithIvarName:ivar.name ivar_type:ivar.type option:^(MLDatabaseRuntimeIvar *ivar) {
-            
             NSString *ivar_name = ivar.name;
             NSInteger ivar_type = ivar.type;
             id value = nil;

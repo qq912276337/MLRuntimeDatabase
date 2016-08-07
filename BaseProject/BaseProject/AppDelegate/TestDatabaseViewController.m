@@ -23,10 +23,6 @@
     // Do any additional setup after loading the view from its nib.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (IBAction)insert:(id)sender {
     for (NSInteger i =2; i < 5; i++) {
@@ -35,13 +31,11 @@
         tea.id = i;
         tea.depart = @"教职工";
         tea.name = [NSString stringWithFormat:@"%@%ld",NSStringFromClass([tea class]),i];
-        
         /** 模型对象2 */
         BSStudent *stu = [BSStudent new];
         stu.id = i;
         stu.name = [NSString stringWithFormat:@"%@%ld",NSStringFromClass([stu class]),i];
         stu.tea = tea;
-        
         /** 模型对象0 */
         BSUser *user = [BSUser new];
         user.id = i;
@@ -57,13 +51,9 @@
                 MMLog(@"-----save：%ld--",save);
             }];
         }];
-        
     }
-    
 }
-- (IBAction)change:(id)sender {
-    //修改数据调用方法跟上面insert一样:ml_saveDataWithModel，内部会自动调用数据库的insert或者update
-    
+- (IBAction)change:(id)sender {//修改数据调用方法跟上面insert一样:ml_saveDataWithModel，内部会自动调用数据库的insert或者update
 }
 - (IBAction)del:(id)sender {
     BSUser *user = [BSUser new];

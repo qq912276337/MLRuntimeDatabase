@@ -172,18 +172,13 @@ NSString *const MLDB_PrimaryKey = @"id";
         if ([[self ml_propertyIsInstanceOfArray] objectForKey:ivar_name]) {
             ivar_type = RuntimeObjectIvarTypeArray;
         }
-    }
-    
-    if ([self ml_propertyIsInstanceOfImage]) {
+    }else if ([self ml_propertyIsInstanceOfImage]) {
         if ([[self ml_propertyIsInstanceOfImage] objectForKey:ivar_name]) {
             ivar_type = RuntimeObjectIvarTypeImage;
         }
-    }
-    
-    if ([self ml_propertyIsInstanceOfData] && [[self ml_propertyIsInstanceOfData] objectForKey:ivar_name]) {
+    }else if ([self ml_propertyIsInstanceOfData] && [[self ml_propertyIsInstanceOfData] objectForKey:ivar_name]) {
         ivar_type = RuntimeObjectIvarTypeData;
     }
-    
     
     MLDatabaseRuntimeIvar *ivar = [MLDatabaseRuntimeIvar new];
     ivar.name = ivar_name;
