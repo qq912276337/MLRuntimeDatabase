@@ -38,7 +38,7 @@
         stu.tea = tea;
         /** 模型对象0 */
         BSUser *user = [BSUser new];
-        user.id = i;
+        user.userid = i;
         user.name = [NSString stringWithFormat:@"%@%ld",NSStringFromClass([user class]),i];
         user.stu = stu;
         user.image = [UIImage imageNamed:@"sml.jpg"];
@@ -48,7 +48,6 @@
         [[MLDatabaseQueue ml_databaseQueue] inDatabase:^(FMDatabase *db) {
             /** 存储:会自动调用insert或者update，不需要担心重复插入数据 */
             [db ml_saveDataWithModel:user primaryKey:@"id" option:^(BOOL save) {
-                MMLog(@"-----save：%ld--",save);
             }];
         }];
     }
@@ -57,10 +56,9 @@
 }
 - (IBAction)del:(id)sender {
     BSUser *user = [BSUser new];
-    user.id = 2;
+    user.userid = 2;
     [[MLDatabaseQueue ml_databaseQueue]inDatabase:^(FMDatabase *db) {
         [db ml_deleteDataWithModel:user option:^(BOOL del) {
-            MMLog(@"-----del:%ld--",del);
         }];
     }];
 }
@@ -69,10 +67,9 @@
     
     //查询单个模型数据
     BSUser *user = [BSUser new];
-    user.id = 3;
+    user.userid = 3;
     [[MLDatabaseQueue ml_databaseQueue]inDatabase:^(FMDatabase *db) {
         [db ml_excuteDataWithModel:user option:^(id output_model) {
-            MMLog(@"-----%@--",[output_model mj_keyValues]);
         }];
     }];
 ////    查询某种模型的所有数据、

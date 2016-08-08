@@ -15,10 +15,12 @@ NSString *const MLDB_AppendingIDForModelProperty = @"_id";
 
 NSString *const MLDB_PrimaryKey = @"id";
 
-
-
-
-+ (NSDictionary *)ml_primaryKey{
+/**
+ * 实现该方法，则必须实现：ml_replacedKeyFromPropertyName
+ * 设置主键:能够唯一标示该模型的属性
+ * 
+ */
++ (NSString *)ml_primaryKey{
     return nil;
 }
 

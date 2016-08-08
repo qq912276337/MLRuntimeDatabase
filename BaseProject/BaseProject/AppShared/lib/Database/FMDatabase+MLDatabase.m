@@ -31,7 +31,16 @@
 #pragma mark -- 有PrimaryKey
 - (void)ml_exsitInDatabaseForModel:(id )model primaryKey:(NSString *)primaryKey option:(ExistExcuteOption )option{
     if (!primaryKey) primaryKey = MLDB_PrimaryKey;
-    FMResultSet *set = [self executeQuery:[NSString stringWithFormat:@"select * from %@ where %@ = %@ ;",NSStringFromClass([model class]),primaryKey,[model valueForKey:primaryKey]]];
+    
+    id primary_keyValue = nil;
+    if ([[model class] ml_primaryKey]) {
+        primary_keyValue = [model valueForKey:[[model class] ml_primaryKey]];
+        primaryKey = MLDB_PrimaryKey;
+    }else{
+        primary_keyValue = [model valueForKey:primaryKey];
+    }
+    MMLog(@"%@",primaryKey);
+    FMResultSet *set = [self executeQuery:[NSString stringWithFormat:@"select * from %@ where %@ = %@ ;",NSStringFromClass([model class]),primaryKey,primary_keyValue]];
     if (option) {
         if ([set next]) {
             option(YES);
@@ -52,6 +61,7 @@
         if (ivar_type == RuntimeObjectIvarTypeObject) {
             //先取值出来
             id value = [model valueForKey:ivar_name];
+            
             
             if ([[model class] ml_replacedKeyFromDictionaryWhenPropertyIsObject]) {
                 NSDictionary *dict = [[model class] ml_replacedKeyFromDictionaryWhenPropertyIsObject];
