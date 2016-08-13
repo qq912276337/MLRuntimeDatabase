@@ -19,10 +19,12 @@
     [super viewDidLoad];
     [self addLeftNavigationItemWithImage:@"箭头二" size:CGSizeMake(30, 30) target:self action:@selector(clickContentVcLeftItem)];
     
-   
-    
-    
-    
+//    @weakify(self);
+//    _timer = [NSTimer hb_scheduledTimerWithTimeInterval:1 block:^(NSTimer *timer) {
+//        @strongify(self);
+//        [self printTest];
+//        NSLog(@"hb_scheduledTimer");
+//    } repeats:YES];
     
 }
 

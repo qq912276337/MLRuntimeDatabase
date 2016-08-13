@@ -17,8 +17,13 @@
 //    return ivar;
 //}
 
-+ (NSDictionary *)ml_primaryKey{
-    return @{MLDB_PrimaryKey:@"uid"};
+
++ (NSString *)ml_primaryKey{
+    return @"userid";
+}
+
++ (NSDictionary *)ml_replacedKeyFromPropertyName{
+    return @{@"userid":MLDB_PrimaryKey};
 }
 
 + (NSDictionary *)ml_propertyIsInstanceOfImage{

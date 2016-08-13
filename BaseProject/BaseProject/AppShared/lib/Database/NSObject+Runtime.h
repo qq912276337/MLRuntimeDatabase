@@ -35,8 +35,12 @@ typedef void(^RuntimeObjectIvarsOption)(MLDatabaseRuntimeIvar *ivar);
 
 @interface NSObject (Runtime)
 
-/** 设置主键 */
-+ (NSDictionary *)ml_primaryKey;
+/**
+ * 实现该方法，则必须实现：ml_replacedKeyFromPropertyName
+ * 设置主键:能够唯一标示该模型的属性
+ *
+ */
++ (NSString *)ml_primaryKey;
 
 /**
  *  将属性为数组

@@ -11,7 +11,7 @@
 #import "BSTeacher.h"
 @interface BSUser : NSObject
 
-@property(nonatomic,assign)NSInteger id;
+@property(nonatomic,assign)NSInteger userid;
 @property(nonatomic,strong)NSArray*arr;
 @property(nonatomic,strong)NSData*data;
 @property(nonatomic,strong)BSStudent*stu;
