@@ -216,9 +216,9 @@
 		BF80C2B81D2B46940068260F /* MMBlurEffectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMBlurEffectView.m; path = ../AppShared/view/MMBlurEffectView.m; sourceTree = "<group>"; };
 		BF88EAAE1D4C5FFE0098440A /* MLSystemInterfaceTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLSystemInterfaceTool.h; sourceTree = "<group>"; };
 		BF88EAAF1D4C5FFE0098440A /* MLSystemInterfaceTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLSystemInterfaceTool.m; sourceTree = "<group>"; };
-		BF88EAB61D4CA8200098440A /* TestDatabaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDatabaseViewController.h; sourceTree = "<group>"; };
-		BF88EAB71D4CA8200098440A /* TestDatabaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDatabaseViewController.m; sourceTree = "<group>"; };
-		BF88EAB81D4CA8200098440A /* TestDatabaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestDatabaseViewController.xib; sourceTree = "<group>"; };
+		BF88EAB61D4CA8200098440A /* TestDatabaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestDatabaseViewController.h; path = AppDelegate/TestDatabaseViewController.h; sourceTree = "<group>"; };
+		BF88EAB71D4CA8200098440A /* TestDatabaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestDatabaseViewController.m; path = AppDelegate/TestDatabaseViewController.m; sourceTree = "<group>"; };
+		BF88EAB81D4CA8200098440A /* TestDatabaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TestDatabaseViewController.xib; path = AppDelegate/TestDatabaseViewController.xib; sourceTree = "<group>"; };
 		BF9622021D4728D300362A87 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		BF9622031D4728D300362A87 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
 		BF9622041D4728D300362A87 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
@@ -453,6 +453,9 @@
 			isa = PBXGroup;
 			children = (
 				BFB36A9B1D2A420000040BD2 /* AppDelegate */,
+				BF88EAB61D4CA8200098440A /* TestDatabaseViewController.h */,
+				BF88EAB71D4CA8200098440A /* TestDatabaseViewController.m */,
+				BF88EAB81D4CA8200098440A /* TestDatabaseViewController.xib */,
 				BF76BE881D2257BD0034DD3C /* Supporting Files */,
 			);
 			path = BaseProject;
@@ -873,9 +876,6 @@
 			children = (
 				BFB36A9C1D2A420000040BD2 /* AppDelegate.h */,
 				BFB36A9D1D2A420000040BD2 /* AppDelegate.m */,
-				BF88EAB61D4CA8200098440A /* TestDatabaseViewController.h */,
-				BF88EAB71D4CA8200098440A /* TestDatabaseViewController.m */,
-				BF88EAB81D4CA8200098440A /* TestDatabaseViewController.xib */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";

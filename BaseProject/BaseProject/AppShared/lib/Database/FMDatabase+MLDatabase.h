@@ -17,9 +17,6 @@ typedef void(^ExcuteOption)(id output_model);
 typedef void(^AllModelsOption)(NSMutableArray *models);
 @interface FMDatabase (CLDatabase)
 
-#warning 使用MLDatabase，必须保证每个模型类的主键保持一致，例如我给的例子中User，Teacher，Student的主键都是@“id”，然后修改MLDB_PrimaryKey ＝ 模型类主键
-#warning 如果项目中的模型类的主键不唯一，可以使用MJExtension替换主键（将模型主键改成一致）
-
 #warning 方法中传入的model，至少模型的主键有值
 
 /** 保存一个模型 */
