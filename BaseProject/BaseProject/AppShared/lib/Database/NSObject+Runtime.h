@@ -11,6 +11,9 @@
 #import "MLDatabaseRuntimeIvar.h"
 #import <MJExtension.h>
 
+/** ivar_name:属性名，如果符合主键声明条件会自动替换成主键：MLDB_PrimaryKey */
+#define MLDB_EqualsPrimaryKey(ivar_name)         if ([[[model class] ml_primaryKey] isEqualToString:ivar_name]) ivar_name = MLDB_PrimaryKey;
+
 /** 模型属性，建表时字段所加的后缀 */ 
 extern NSString *const MLDB_AppendingIDForModelProperty;
 /** 所有表的主键默认设置 */

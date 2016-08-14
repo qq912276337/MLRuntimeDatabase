@@ -56,7 +56,7 @@
 }
 - (IBAction)del:(id)sender {
     BSUser *user = [BSUser new];
-    user.userid = 2;
+    user.userid = 3;
     [[MLDatabaseQueue ml_databaseQueue]inDatabase:^(FMDatabase *db) {
         [db ml_deleteDataWithModel:user option:^(BOOL del) {
         }];
@@ -65,19 +65,19 @@
 
 - (IBAction)excute:(id)sender {
     
-    //查询单个模型数据
-    BSUser *user = [BSUser new];
-    user.userid = 3;
-    [[MLDatabaseQueue ml_databaseQueue]inDatabase:^(FMDatabase *db) {
-        [db ml_excuteDataWithModel:user option:^(id output_model) {
-        }];
-    }];
-////    查询某种模型的所有数据、
+//    //查询单个模型数据
+//    BSUser *user = [BSUser new];
+//    user.userid = 3;
 //    [[MLDatabaseQueue ml_databaseQueue]inDatabase:^(FMDatabase *db) {
-//        [db ml_excuteDatasWithModel:[BSUser new] option:^(NSMutableArray *models) {
-//            MMLog(@"----%@---",models);
+//        [db ml_excuteDataWithModel:user option:^(id output_model) {
 //        }];
 //    }];
+//    查询某种模型的所有数据、
+    [[MLDatabaseQueue ml_databaseQueue]inDatabase:^(FMDatabase *db) {
+        [db ml_excuteDatasWithModel:[BSUser new] option:^(NSMutableArray *models) {
+            MMLog(@"----%@---",models);
+        }];
+    }];
 }
 
 @end

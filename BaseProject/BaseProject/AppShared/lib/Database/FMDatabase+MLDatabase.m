@@ -39,7 +39,6 @@
     }else{
         primary_keyValue = [model valueForKey:primaryKey];
     }
-    MMLog(@"%@",primaryKey);
     FMResultSet *set = [self executeQuery:[NSString stringWithFormat:@"select * from %@ where %@ = %@ ;",NSStringFromClass([model class]),primaryKey,primary_keyValue]];
     if (option) {
         if ([set next]) {
@@ -62,13 +61,13 @@
             //先取值出来
             id value = [model valueForKey:ivar_name];
             
-            
             if ([[model class] ml_replacedKeyFromDictionaryWhenPropertyIsObject]) {
                 NSDictionary *dict = [[model class] ml_replacedKeyFromDictionaryWhenPropertyIsObject];
                 if ([dict objectForKey:ivar_name]) {
                     // 递归调用
                     if (value) {
-                        [self ml_insertDataWithModel:value primaryKey:MLDB_PrimaryKey option:nil];
+                        //[self ml_insertDataWithModel:value primaryKey:MLDB_PrimaryKey option:nil];
+                        [self ml_saveDataWithModel:value primaryKey:MLDB_PrimaryKey option:nil];
                     }
                     //拼接外键
                     id subValue = [value valueForKey:primaryKey];
@@ -128,6 +127,9 @@
             id value = [model valueForKey:ivar_name];
             sql2 = [sql2 stringByAppendingString:[NSString stringWithFormat:@"%ld,",[value longValue]]];
         }
+        
+        /** 检测是否是表主键 */
+        MLDB_EqualsPrimaryKey(ivar_name);
         /** 所有情况sql1的拼接都一样 */
         sql1 = [sql1 stringByAppendingString:[NSString stringWithFormat:@"%@,",ivar_name]];
     }];
@@ -149,7 +151,12 @@
     NSString *table = NSStringFromClass([model class]);
     NSString *model_primaryKey = [primaryKey copy];
     __block NSString *initSql = [NSString stringWithFormat:@"update %@ set ",table];;
-    NSString *sql2 = [NSString stringWithFormat:@" where %@ = %@ ;",primaryKey,[model valueForKey:primaryKey]];
+    if ([[model class] ml_primaryKey]) {
+        model_primaryKey = [[model class] ml_primaryKey];
+    }else{
+        model_primaryKey = MLDB_PrimaryKey;
+    }
+    NSString *sql2 = [NSString stringWithFormat:@" where %@ = %@ ;",primaryKey,[model valueForKey:model_primaryKey]];
     [[model class] ml_objectIvar_nameAndIvar_typeWithOption:^(MLDatabaseRuntimeIvar *ivar) {
         [[model class] ml_replaceKeyWithIvarName:ivar.name ivar_type:ivar.type option:^(MLDatabaseRuntimeIvar *ivar) {
             NSString *ivar_name = ivar.name;
@@ -196,11 +203,14 @@
                     NSString *nameForPropertyModel = [ivar_name substringToIndex:ivar_name.length - MLDB_AppendingIDForModelProperty.length];
                     value = [model valueForKey:nameForPropertyModel];
                     if (value) {
-                        [self ml_updateDataWithModel:value primaryKey:primaryKey optiin:nil];
+//                        [self ml_updateDataWithModel:value primaryKey:primaryKey optiin:nil];
+                        [self ml_saveDataWithModel:value primaryKey:MLDB_PrimaryKey option:nil];
                     }
                     value = [value valueForKey:primaryKey];
-                }else
+                }else {
+                    if ([ivar_name isEqualToString:MLDB_PrimaryKey] ) ivar_name = model_primaryKey;
                     value = [model valueForKey:ivar_name];
+                }
             }
             if (value && ![ivar_name isEqualToString:model_primaryKey]) initSql = [initSql stringByAppendingString:[NSString stringWithFormat:@"%@ = %@,",ivar_name,value]];
         }];
@@ -226,19 +236,84 @@
     }];
 }
 - (void)ml_deleteDataWithModel:(id )model primaryKey:(NSString *)primaryKey option:(DeleteOption )option{
+    
+    model = [self ml_excuteDataWithModel:model option:nil];
+    if (model == nil) return;
+    
     NSString *table = NSStringFromClass([model class]);
-    id vlaue = [model valueForKey:primaryKey];
-    NSString *sql = [NSString stringWithFormat:@"delete from %@ where %@ = %@",table,primaryKey,vlaue];
-    if (option) {
-        option([self executeUpdate:sql]);
+    id value = nil;//model的主键值
+    if ([[model class] ml_primaryKey].length > 0) {
+        value = [model valueForKey:[[model class] ml_primaryKey]];
+    }else{
+     value = [model valueForKey:primaryKey];
     }
+    if (value <= 0) return;
+
+    
+    /** 获取所有模型属性名和属性类型 */
+    [[model class] ml_objectIvar_nameAndIvar_typeWithOption:^(MLDatabaseRuntimeIvar *ivar) {
+        
+        [[model class] ml_replaceKeyWithIvarName:ivar.name ivar_type:ivar.type option:^(MLDatabaseRuntimeIvar *ivar) {
+            NSString *ivar_name = ivar.name;
+            id valueOfIvarName = nil;
+            if ([ivar.name hasSuffix:MLDB_AppendingIDForModelProperty]) {
+                NSString *foreignKey = [ivar.name substringToIndex:ivar.name.length - MLDB_AppendingIDForModelProperty.length];
+                valueOfIvarName = [model valueForKey:foreignKey];
+                id classOfForeignKey = [[model class] ml_getClassForKeyIsObject][foreignKey];
+                if (classOfForeignKey != nil && valueOfIvarName) {
+                    //创建实例对象
+//                    id instanceOfForeignKey = [[classOfForeignKey alloc]init];
+                    id instanceOfForeignKey = valueOfIvarName;
+                    // instanceOfForeignKey的主键
+                    id primaryKeyOf_instanceOfForeignKey = nil;
+                    if ([[instanceOfForeignKey class] ml_primaryKey]) {
+                        primaryKeyOf_instanceOfForeignKey = [[instanceOfForeignKey class] ml_primaryKey];
+                    }else{
+                        primaryKeyOf_instanceOfForeignKey = MLDB_PrimaryKey;
+                    }
+                    //设置模型的主键值
+                   // [instanceOfForeignKey setValue:valueOfIvarName forKey:primaryKeyOf_instanceOfForeignKey];
+                    /** 在数据库查询该模型 */
+                    id instanceInDatabase = [self ml_excuteDataWithModel:instanceOfForeignKey primaryKey:MLDB_PrimaryKey option:nil];
+                    if (instanceInDatabase) {
+                        [self ml_deleteDataWithModel:instanceInDatabase primaryKey:MLDB_PrimaryKey option:nil];
+                    }
+                }
+            }else{
+                
+            }
+
+        }];
+        
+    }];
+    NSString *sql = [NSString stringWithFormat:@"delete from %@ where %@ = %@",table,primaryKey,value];
+    if (sql) {
+        FMResultSet *set = [self executeQuery:sql];
+        if ([set next]) {
+            if (option) {
+                option([set next]);
+                [set close];
+            }
+        }
+    }
+    
+    
 }
 #pragma mark -- excuteDataWithModel
 - (id )ml_excuteDataWithModel:(id )fmodel primaryKey:(NSString *)primaryKey option:(ExcuteOption )option{
-    id fvalue = [fmodel valueForKey:primaryKey];
+    NSString *modelPrimaryKey = nil;
+//    NSString *tablePrimaryKey = primaryKey;
+    if ([[fmodel class] ml_primaryKey]) {
+        modelPrimaryKey = [[fmodel class] ml_primaryKey];
+    }else{
+        modelPrimaryKey = primaryKey;
+    }
+    
+    
+    id fvalue = [fmodel valueForKey:modelPrimaryKey];
     id model = [[[fmodel class]alloc ]init];
-    [model setValue:fvalue forKey:primaryKey];
-    NSString * sql = [[model class ] ml_sqlForExcuteWithPrimaryKey:primaryKey value:[fmodel valueForKey:primaryKey]];
+    [model setValue:fvalue forKey:modelPrimaryKey];
+    NSString * sql = [[model class ] ml_sqlForExcuteWithPrimaryKey:primaryKey value:[fmodel valueForKey:modelPrimaryKey]];
     FMResultSet *set= [self executeQuery:sql];
     while ([set next]) {
         [[model class ] ml_objectIvar_nameAndIvar_typeWithOption:^(MLDatabaseRuntimeIvar *ivar) {
@@ -268,7 +343,7 @@
                     if ([ivar.name hasSuffix:MLDB_AppendingIDForModelProperty]) {//模型里面嵌套模型
                         id setValue = [set stringForColumn:ivar.name];
                         if ([setValue integerValue] > 0 ) {
-                            NSString *realName = [ivar.name substringToIndex:ivar.name.length - 3 ];
+                            NSString *realName = [ivar.name substringToIndex:ivar.name.length - MLDB_AppendingIDForModelProperty.length];
                             Class destClass = [[[model class] ml_getClassForKeyIsObject] objectForKey:realName];
                             id subModel = [[destClass alloc]init];
                             //如果主键有替换
@@ -277,7 +352,11 @@
                             [model setValue:retModel forKey:realName];
                         }
                     }else{//基本数据类型：long
-                        [model setValue:@([set longForColumn:ivar.name]) forKey:ivar.name];
+                        if ([ivar.name isEqualToString:MLDB_PrimaryKey] && modelPrimaryKey) {
+                            [model setValue:@([set longForColumn:ivar.name]) forKey:modelPrimaryKey];
+                        }else{
+                            [model setValue:@([set longForColumn:ivar.name]) forKey:ivar.name];
+                        }
                     }
                 }
             }];
@@ -288,6 +367,7 @@
 }
 #pragma mark -- 查询所有
 - (void)ml_excuteDatasWithModel:(id )model primaryKey:(NSString *)primaryKey option:(AllModelsOption )option{
+    NSString *modelPrimaryKey = [[model class] ml_primaryKey];
     NSString *table = NSStringFromClass([model class]);
     NSString *sql = [NSString stringWithFormat:@"select * from %@",table];
     NSMutableArray *arr = [NSMutableArray array];
@@ -295,7 +375,11 @@
     while ([set next]) {
         id submodel = [[[model class] alloc]init];
         id value = [set stringForColumn:primaryKey];
+        if (modelPrimaryKey) {
+            [submodel setValue:value forKey:modelPrimaryKey];
+        }else{
         [submodel setValue:value forKey:primaryKey];
+        }
         submodel = [self ml_excuteDataWithModel:submodel primaryKey:primaryKey option:nil];
         [arr addObject:submodel];
     }
