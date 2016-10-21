@@ -254,7 +254,7 @@
     [[model class] ml_objectIvar_nameAndIvar_typeWithOption:^(MLDatabaseRuntimeIvar *ivar) {
         
         [[model class] ml_replaceKeyWithIvarName:ivar.name ivar_type:ivar.type option:^(MLDatabaseRuntimeIvar *ivar) {
-            NSString *ivar_name = ivar.name;
+          //  NSString *ivar_name = ivar.name;
             id valueOfIvarName = nil;
             if ([ivar.name hasSuffix:MLDB_AppendingIDForModelProperty]) {
                 NSString *foreignKey = [ivar.name substringToIndex:ivar.name.length - MLDB_AppendingIDForModelProperty.length];
